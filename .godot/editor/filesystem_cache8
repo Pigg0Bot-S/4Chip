@@ -1,0 +1,11 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1721857067
+icon.png::CompressedTexture2D::5544511042009284712::1721310511::1721310648::1::::<><>::
+::res://Assets/::1721856793
+::res://Assets/Textures/::1721856914
+chip.svg::CompressedTexture2D::937743760587641806::1721850801::1721857131::1::::<><>::
+connect_board.svg::CompressedTexture2D::6492526446839564360::1721850591::1721856914::1::::<><>::
+::res://Scenes/::1721857074
+board.tscn::PackedScene::926343332383912139::1721857074::0::1::::<><>::uid://cyra7yc242yvw::::res://Assets/Textures/connect_board.svg
+::res://Shaders/::1721857074
+board.gdshader::Shader::-1::1721857074::0::1::::<><>::
