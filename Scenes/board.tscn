@@ -51,7 +51,7 @@ text = "Winner"
 label_settings = SubResource("LabelSettings_5tyho")
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="Control/WinText"]
+[node name="ResetInfo" type="Label" parent="Control/WinText"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
