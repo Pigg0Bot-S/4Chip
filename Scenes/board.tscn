@@ -1,20 +1,90 @@
-[gd_scene load_steps=4 format=3 uid="uid://ngy0exf47u7l"]
+[gd_scene load_steps=8 format=3 uid="uid://ngy0exf47u7l"]
 
 [ext_resource type="Script" path="res://Scenes/board.gd" id="1_4kfjl"]
 [ext_resource type="Texture2D" uid="uid://cyra7yc242yvw" path="res://Assets/Textures/connect_board.svg" id="1_mxy6k"]
-[ext_resource type="Texture2D" uid="uid://nmirdfljcr7k" path="res://Assets/Textures/chip.svg" id="2_776ad"]
+[ext_resource type="AudioStream" uid="uid://do6hd63of20t6" path="res://Assets/Audio/error.wav" id="3_yfe2c"]
+[ext_resource type="AudioStream" uid="uid://y84occeyvinc" path="res://Assets/Audio/place.wav" id="4_l0rcd"]
+[ext_resource type="AudioStream" uid="uid://bvwupdj0bahpu" path="res://Assets/Audio/victory.wav" id="5_gq87p"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5tyho"]
+font_size = 200
+
+[sub_resource type="LabelSettings" id="LabelSettings_id6ai"]
+font_size = 46
 
 [node name="Board" type="Node2D"]
 script = ExtResource("1_4kfjl")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1256.0
+offset_bottom = 1080.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0, 0, 0, 1)
+
+[node name="WinText" type="Label" parent="Control"]
+visible = false
+top_level = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -628.0
+offset_top = -136.5
+offset_right = 628.0
+offset_bottom = 136.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Winner"
+label_settings = SubResource("LabelSettings_5tyho")
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Control/WinText"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -148.0
+offset_top = -23.0
+offset_right = 148.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Hit 'R' to reset the game and try again!"
+label_settings = SubResource("LabelSettings_id6ai")
+horizontal_alignment = 1
+
+[node name="Coins" type="Node2D" parent="."]
+
+[node name="BoardSprite" type="Sprite2D" parent="."]
 scale = Vector2(0.818182, 0.818182)
 texture = ExtResource("1_mxy6k")
 centered = false
 
-[node name="Coins" type="Node2D" parent="."]
+[node name="Selector" type="Polygon2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+color = Color(1, 1, 1, 0.254902)
+offset = Vector2(-80, 0)
+polygon = PackedVector2Array(0, 0, 160, 0, 160, 1080, 0, 1080)
 
-[node name="Coin" type="Sprite2D" parent="."]
-position = Vector2(208, 203)
-scale = Vector2(0.9, 0.9)
-texture = ExtResource("2_776ad")
+[node name="Error" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_yfe2c")
+
+[node name="Place" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_l0rcd")
+
+[node name="Win" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_gq87p")

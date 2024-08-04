@@ -1,3 +1,11 @@
+Label
+RichTextLabel
+Control
+ColorRect
+AudioStreamPlayer
+AudioListener2D
+AudioStreamPlayer2D
+Polygon2D
+CollisionShape2D
 Node2D
 Sprite2D
-ColorRect

@@ -12,9 +12,10 @@
   <defs
      id="defs1" />
   <g
-     id="layer1">
+     id="layer1"
+     style="fill:#ffffff">
     <circle
-       style="fill:#ff0000;fill-opacity:1;stroke-width:0.957123"
+       style="fill:#ffffff;fill-opacity:1;stroke-width:0.957123"
        id="path1"
        cx="12.7"
        cy="12.7"
