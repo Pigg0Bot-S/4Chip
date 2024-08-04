@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Connect4"
+config/name="4Chip"
+config/description="4Chip is an awesome and super original game where two people take turns dropping chips onto the board. Whoever gets 4 consecutive pieces diagonally or orthagonally wins!"
 run/main_scene="res://Scenes/board.tscn"
 config/features=PackedStringArray("4.2")
 config/icon="res://icon.svg"
