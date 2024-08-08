@@ -1,9 +1,13 @@
 extends Node2D
+class_name Board
+
+enum CoinColor {NONE, RED ,BLUE}
+enum Direction {HORIZONTAL, VERTICAL, DIAGONAL, DIAGONAL_DOWN}
 
 @onready var coins = $"Coins"
-@export var turn_color : CoinColor = CoinColor.RED
+var turn_color : CoinColor = CoinColor.RED
 var won = false
-var coin_scene = preload("res://Scenes/coin.tscn")
+var coin_scene : PackedScene = preload("res://Scenes/coin.tscn")
 var columns : Array[Array] = [
 	[],
 	[],
@@ -13,8 +17,7 @@ var columns : Array[Array] = [
 	[],
 	[]
 ]
-enum CoinColor {NONE, RED ,BLUE}
-enum Direction {HORIZONTAL, VERTICAL, DIAGONAL, DIAGONAL_DOWN}
+
 
 const COLUMN_WIDTH : int = 158
 
@@ -44,17 +47,17 @@ func get_coin_node(color : CoinColor) -> Sprite2D:
 
 ## Appends a coin to the column passed, and returns its coordinates.
 func add_coin(color : CoinColor, column : int) -> Vector2i:
-	var pos = columns[column].size()
-	if pos == 6:
+	var row = columns[column].size()
+	if row == 6:
 		return Vector2i(-1, -1)
 	
 	columns[column].append(color)
 	
 	
 	var new_coin = get_coin_node(color)
-	new_coin.position = Vector2(column,-pos)*(COLUMN_WIDTH+19)+Vector2(98, 982)
+	new_coin.position = Vector2(column,-row)*(COLUMN_WIDTH+19)+Vector2(98, 982)
 	$Coins.add_child(new_coin)
-	return Vector2i(column, pos)
+	return Vector2i(column, row)
 
 ## Gets the color of the coin at pos
 func get_coin(pos : Vector2i) -> CoinColor:
@@ -144,8 +147,8 @@ func handle_click(pos : Vector2):
 		$Error.play()
 		return
 	
-	var win : bool = check_coin_win(coin_pos)
-	if win:
+	var did_win : bool = check_coin_win(coin_pos)
+	if did_win:
 		win()
 		return
 		
